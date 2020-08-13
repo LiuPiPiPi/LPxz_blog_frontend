@@ -24,52 +24,52 @@
 </template>
 
 <script>
-  export default {
-    name: "lp_footer",
-    data() {
-      return {};
+export default {
+  name: "lp_footer",
+  data() {
+    return {};
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
     },
-    methods: {
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      reloadPage() {
-        this.$common.reloadPage();
-      },
-      toWebsite(url) {
-        this.$common.toWebsite(url);
-      }
+    reloadPage() {
+      this.$common.reloadPage();
     },
-  }
+    toWebsite(url) {
+      this.$common.toWebsite(url);
+    }
+  },
+}
 </script>
 
 <style scoped lang="scss">
-  .el-row {
-    margin-bottom: 20px;
+.el-row {
+  margin-bottom: 20px;
 
-    &,
-    :last-child {
-      margin-bottom: 0;
-    }
+  &,
+  :last-child {
+    margin-bottom: 0;
   }
+}
 
-  .el-col {
-    /*border-right: rgba(144, 147, 153, 0.56) solid 0.5px;*/
-  }
+.el-col {
+  /*border-right: rgba(144, 147, 153, 0.56) solid 0.5px;*/
+}
 
-  #lp_footer {
-    background-color: black;
-    bottom: 0;
-    color: white;
-    font-size: 16px;
-    padding: 20px 0;
-    text-align: -webkit-center;
+#lp_footer {
+  background-color: black;
+  bottom: 0;
+  color: white;
+  font-size: 16px;
+  padding: 20px 0;
+  text-align: -webkit-center;
 
-  }
+}
 
-  .personal-barcode-pic {
-    width: 60px;
-    height: 60px;
-    display: block;
-  }
+.personal-barcode-pic {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
 </style>
