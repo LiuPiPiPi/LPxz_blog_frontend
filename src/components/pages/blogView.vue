@@ -14,10 +14,12 @@
                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
               </div>
               <div class="bottom">
-                <div v-html="compiledMarkdown"></div>
+<!--                <div v-html="compiledMarkdown"></div>-->
+                <vue-markdown>{{md_msg_Linux}}</vue-markdown>
               </div>
             </el-card>
             <button class="nice-btn">这是一个特别====好看的按钮</button>
+
           </el-col>
           <el-col :span="5" :offset="1">
             <side-info></side-info>
@@ -33,12 +35,14 @@
 
 <script>
 import marked from 'marked'
+import VueMarkdown from "vue-markdown"
 
 import lp_header from "./lp_header";
 import blogBanner from "./blogBanner";
 import sideInfo from "./sideInfo";
 import lp_footer from "./lp_footer";
 import Blog_Html from "../../../static/mock/blog_html.json";
+import md_Linux from "../../md_files/Linux.md";
 import axios from "axios";
 
 var rendererMD = new marked.Renderer()
@@ -56,6 +60,7 @@ marked.setOptions({
 export default {
   name: "blogView",
   components: {
+    VueMarkdown,
     lp_header,
     blogBanner,
     sideInfo,
@@ -65,17 +70,23 @@ export default {
     return {
       blogInfos: Blog_Html,
       blogContent: "",
+      md_msg_Linux: md_Linux,
     }
   },
   mounted() {
-    axios
-      .get("../../../static/mock/blog_html.json")
-      .then(response => (this.blogContent = response.data[1].blogContent))
+    // axios
+    //   .get("../../../static/mock/blog_html.json")
+    //   .then(response => (this.blogContent = response.data[1].blogContent));
+    const link = document.createElement('link');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = '../../assets/css/my-theme.css';
+    document.head.appendChild(link);
   },
   computed: {
     compiledMarkdown: function () {
       return marked(
-        this.blogContent, {sanitize: true}
+        this.md_msg_Linux, {sanitize: true}
       )
     },
   },
