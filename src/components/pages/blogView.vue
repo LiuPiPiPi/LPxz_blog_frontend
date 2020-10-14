@@ -12,7 +12,7 @@
               <div slot="header" class="clearfix">
                 <span>博客名称</span>
                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-              </div>klkl
+              </div>
               <div class="bottom">
 <!--                <div v-html="compiledMarkdown"></div>-->
                 <vue-markdown>{{md_msg_Linux}}</vue-markdown>
